@@ -1,17 +1,19 @@
-// 꼭 이렇게 되어 있어야 해요!
 import axios from 'axios';
 
 export default async function handler(req, res) {
   const { name } = req.query;
 
-  const API_KEY = '여기에 너의 인증키';
+  const API_KEY = 'c98ff808a2ed46859bcb7e096a3d076e';
+
   const url = `https://open.neis.go.kr/hub/schoolInfo?KEY=${API_KEY}&Type=json&SCHUL_NM=${encodeURIComponent(name)}`;
+  console.log("요청 URL:", url);  // 디버깅용 로그
 
   try {
     const response = await axios.get(url);
 
-    if (response.data && response.data.schoolInfo) {
-      const school = response.data.schoolInfo[1].row[0];
+    const school = response.data?.schoolInfo?.[1]?.row?.[0]; // <-- 안전하게 꺼내기
+
+    if (school) {
       res.status(200).json({
         name: school.SCHUL_NM,
         address: school.ORG_RDNMA,
