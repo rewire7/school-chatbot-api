@@ -1,9 +1,10 @@
-const axios = require('axios');
+// 꼭 이렇게 되어 있어야 해요!
+import axios from 'axios';
 
 export default async function handler(req, res) {
   const { name } = req.query;
 
-  const API_KEY = 'c98ff808a2ed46859bcb7e096a3d076e';
+  const API_KEY = '여기에 너의 인증키';
   const url = `https://open.neis.go.kr/hub/schoolInfo?KEY=${API_KEY}&Type=json&SCHUL_NM=${encodeURIComponent(name)}`;
 
   try {
