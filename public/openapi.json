@@ -4,6 +4,11 @@
     "title": "학교 자동완성 API",
     "version": "1.0.0"
   },
+  "servers": [
+    {
+      "url": "https://school-chatbot-api.vercel.app"
+    }
+  ],
   "paths": {
     "/api/autocomplete": {
       "get": {
