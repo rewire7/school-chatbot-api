@@ -1,0 +1,41 @@
+{
+  "openapi": "3.0.0",
+  "info": {
+    "title": "학교 자동완성 API",
+    "version": "1.0.0"
+  },
+  "paths": {
+    "/api/autocomplete": {
+      "get": {
+        "summary": "학교 이름 자동완성",
+        "description": "입력한 키워드를 포함한 학교 이름을 최대 10개까지 반환합니다.",
+        "parameters": [
+          {
+            "name": "keyword",
+            "in": "query",
+            "description": "검색할 학교 키워드",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "자동완성 결과 리스트",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "array",
+                  "items": {
+                    "type": "string"
+                  }
+                }
+              }
+            }
+          }
+        }
+      }
+    }
+  }
+}
